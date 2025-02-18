@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geçme Notu Hesapla</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        input,
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Geçme Notu Hesaplama</h2>
+
+    <label>Vize notu % kaç etkiliyor:</label>
+    <input type="number" id="vize_yuzde" placeholder="Örn: 40" required><br>
+
+    <label>Ödev notu % kaç etkiliyor (yoksa 0 girin):</label>
+    <input type="number" id="odev_yuzde" placeholder="Örn: 10" required><br>
+
+    <label>Vizeden aldığın notu gir:</label>
+    <input type="number" id="vize_notu" placeholder="Örn: 70" required><br>
+
+    <label>Hocanın ödeve verdiği notu gir:</label>
+    <input type="number" id="odev_notu" placeholder="Örn: 80" required><br>
+
+    <button onclick="hesapla()">Hesapla</button>
+
+    <div id="result"></div>
+
+    <script>
+        function hesapla() {
+            let vize_yuzde = parseInt(document.getElementById("vize_yuzde").value);
+            let odev_yuzde = parseInt(document.getElementById("odev_yuzde").value);
+            let vize_notu = parseInt(document.getElementById("vize_notu").value);
+            let odev_notu = parseInt(document.getElementById("odev_notu").value) || 0;
+
+            let final_yuzde = 100 - vize_yuzde - odev_yuzde;
+
+            let vize_yuzde_carpilmis = vize_notu * (vize_yuzde / 100);
+            let odev_yuzde_carpilmis = odev_notu * (odev_yuzde / 100);
+
+            let final_alman_gereken_yuzde_carpilmis = 60 - vize_yuzde_carpilmis - odev_yuzde_carpilmis;
+            let finalde_alman_gereken = final_alman_gereken_yuzde_carpilmis * (100 / final_yuzde);
+
+            document.getElementById("result").innerHTML =
+                "Finalde alman gereken not: " + Math.ceil(finalde_alman_gereken);
+        }
+    </script>
+
+</body>
+
+</html>
