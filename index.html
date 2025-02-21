@@ -1,53 +1,54 @@
 <html>
-    <head>
-        <style>
+<head>
+<style>
+
 /* * { border: 1px solid; } */
-            body {
-                text-align: center;
-                font-family: sans-serif;
-                font-size: 2em;
-                
-            }
+body {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 20px;
+    margin: 50px;
+}
+#pcanard { width: 400px; }
+@media (min-width: 900px) {
+    body {
+        font-size: 40px;
+        margin-top: 100px;
+    }
+    #pcanard {
+        width: 700px;
+    }
+}
 
-            #pcanard {
-                width: 700px;
-            }
+</style>
+</head>
 
-        </style>
-    </head>
 <body>
-    <div>
-        <br>
-        <h1 class="blo">Hoş geldin!</h1>
-        <img src="le_vilain_petit_canard.jpg" id="pcanard">
-        <br>
-        <br>
-        <p class="blo">Bu internet sayfasında HTML, CSS, Javascript öğrenirken yaptığım şeyleri paylaşıyorum. </p>
+    <h2 class="blo">Hoş geldin!</h2>
+    <img src="le_vilain_petit_canard.jpg" id="pcanard">
+    <br>
+    <br>
+    <p class="blo">
+        Programlama öğrenmeye başlayalı tam olarak
+        <b><span id="daysCount"></span> gün</b> oldu!🥳
+    </p>
+    <hr>
+    <p style="display: inline;">🎓</p>
+    <a href="geçme notu hesapla.html">Geçme Notu Hesapla</a>
+    <br>
+    <br>
+    <p style="display: inline;">🧪</p>
+    <a href="test.html">Deneme</a>
 
-        <p class="blo">
-            Programlama öğrenmeye başlayalı tam olarak
-            <b><span id="daysCount"></span> gün</b> oldu!🥳
-        </p>
-        <script>
-            function daysSince(startDate) {
-            const start = new Date(startDate);
-            const today = new Date();
-            const diffTime = Math.abs(today - start);
-            return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            }
-            document.getElementById('daysCount').innerText = daysSince('2025-02-05');
-
-            
-        </script>
-        <hr>
-        <p style="display: inline;">🎓</p>
-        <a href="geçme notu hesapla.html">Geçme Notu Hesapla</a>
-
-    </div>
-
-
-    <script>
-        
-    </script>
+<script>
+function daysSince(startDate) {
+    const start = new Date(startDate);
+    const today = new Date();
+    const diffTime = Math.abs(today - start);
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+}
+daysCount.innerText = daysSince('2025-02-05');
+</script>
 </body>
+
 </html>
