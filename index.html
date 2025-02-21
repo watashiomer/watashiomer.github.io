@@ -3,21 +3,20 @@
 <style>
 
 /* * { border: 1px solid; } */
+
 body {
     text-align: center;
     font-family: sans-serif;
-    font-size: 20px;
-    margin: 50px;
+    margin-top: 100px;
+    font-size: large;
 }
-#pcanard { width: 400px; }
-@media (min-width: 900px) {
-    body {
-        font-size: 40px;
-        margin-top: 100px;
-    }
-    #pcanard {
-        width: 700px;
-    }
+#pcanard { width: 500px; }
+    
+button {
+    font-size: 200%;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
 }
 
 </style>
@@ -29,25 +28,29 @@ body {
     <br>
     <br>
     <p class="blo">
-        Programlama öğrenmeye başlayalı tam olarak
-        <b><span id="daysCount"></span> gün</b> oldu!🥳
+        Programlama öğrenmeye başlayalı<br>
+        <b><span id="xdays"></span> gün</b> oldu!🥳
     </p>
-    <hr>
-    <p style="display: inline;">🎓</p>
-    <a href="geçme notu hesapla.html">Geçme Notu Hesapla</a>
+    <br>
+    <button onclick="window.location.href='geçme notu hesapla.html'">🎓 Geçme Notu Hesapla</button>
+
+    <p style="color: white;user-select: none;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptates at nesciunt maxime impedit? Recusandae eligendi totam fugiat quia inventore, consequuntur excepturi rerum deleniti vitae ab, autem assumenda doloribus velit.</p>
+    
     <br>
     <br>
-    <p style="display: inline;">🧪</p>
-    <a href="test.html">Deneme</a>
+
 
 <script>
-function daysSince(startDate) {
-    const start = new Date(startDate);
+function sinceFeb5() {
+    const feb5 = new Date('2025-02-05');
     const today = new Date();
-    const diffTime = Math.abs(today - start);
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const diff = Math.abs(today - feb5);
+    return Math.ceil(diff / (1000 * 60 * 60 * 24));
 }
-daysCount.innerText = daysSince('2025-02-05');
+xdays.innerText = sinceFeb5();
+
+
+
 </script>
 </body>
 
