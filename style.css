@@ -1,0 +1,13 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: rgb(235, 235, 235);
+}

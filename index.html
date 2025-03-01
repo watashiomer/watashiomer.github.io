@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="duck.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            margin-top: 40px;
+            font-size: large;
+        }
+
+        button {
+            font-size: 100%;
+            padding: 15px;
+            border-radius: 20px;
+        }
+
+        h1 {
+            font-size: 200%;
+        }
+
+        p {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        #pcanard {
+            width: 350px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hoş geldin!</h1>
+    <img src="pcanard.jpg" id="pcanard">
+    <br>
+    <br>
+    <p>
+        Programlama öğrenmeye başlayalı<br>
+        <b><span id="xdays"></span> gün</b> oldu!🥳
+    </p>
+    <p>
+        <?php
+        // Örnek: index.html dosyasının son güncellenme tarihi
+        $file = "index.php";
+        $lastModified = filemtime($file);
+        $today = time();
+        $daysDiff = floor(($today - $lastModified) / (60 * 60 * 24));
+        
+        echo "Bu site en son $daysDiff gün önce güncellendi.";
+        ?>
+    </p>
+
+    <button onclick="window.location.href='gecme-notu-hesapla.html'">
+        🎓 Geçme Notu Hesapla
+    </button>
+
+
+
+
+
+
+
+    <script>
+        function sinceFeb5() {
+            const feb5 = new Date('2025-02-05');
+            const today = new Date();
+            const diff = Math.abs(today - feb5);
+            return Math.ceil(diff / (1000 * 60 * 60 * 24));
+        }
+        xdays.innerText = sinceFeb5();
+
+
+    </script>
+</body>
+
+</html>

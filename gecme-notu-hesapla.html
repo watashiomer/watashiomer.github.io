@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geçme Notu Hesapla</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            font-size: 1.1em;
+            padding: 20px;
+        }
+
+        input,
+        button {
+            margin: 0.5em;
+            padding: 0.5em;
+            font-size: 1em;
+            border-radius: 1em;
+        }
+
+        input {
+            background-color: #eaeaea;
+            text-align: center;
+            border: none;
+        }
+
+        button {
+            padding: 12.5px;
+        }
+
+        #odev {
+            background-color: rgb(204, 144, 144);
+            display: inline-block;
+            padding: 3%;
+        }
+
+        #result {
+            font-weight: bold;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Geçme Notu Hesaplama</h2>
+
+    <label>Vize notu % kaç etkiliyor:</label>
+    <br>
+    <input type="number" id="viz100" required>
+    <br>
+
+    <label>Vizeden aldığın notu gir:</label>
+    <br>
+    <input type="number" id="viznot" required>
+    <br>
+
+    <div id="odev">
+        <label>Ödev notu % kaç etkiliyor:</label>
+        <br>
+        <input type="number" id="odv100" required placeholder="Yoksa boş bırak">
+        <br>
+        <label>Ödevden aldığın notu gir:</label>
+        <br>
+        <input type="number" id="odvnot" required placeholder="Yoksa boş bırak">
+        <br>
+    </div>
+    <br>
+
+    <button onclick="hesapla()">Hesapla</button>
+    <div id="result"></div>
+
+    <h3>
+        <a href="index.html" style="text-decoration: none;">🏠</a>
+    </h3>
+
+    <script>
+        function hesapla() {
+            let viz100 = document.getElementById("viz100").value;
+            let viznot = document.getElementById("viznot").value;
+            let odv100 = document.getElementById("odv100").value || 0;
+            let odvnot = document.getElementById("odvnot").value || 0;
+
+            let fin100 = 100 - viz100 - odv100;
+
+            let viz100m = viznot * (viz100 / 100);
+            let odv100m = odvnot * (odv100 / 100);
+
+            let fin100m = 60 - viz100m - odv100m;
+            let fin = fin100m * (100 / fin100);
+
+            document.getElementById("result").innerHTML =
+                "Finalde alman gereken not: " + Math.ceil(fin);
+        }
+    </script>
+
+</body>
+
+</html>
