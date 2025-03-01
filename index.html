@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="duck.png">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
         body {
             margin-top: 40px;
@@ -30,6 +30,17 @@
         #pcanard {
             width: 350px;
         }
+
+        #bu_site_enson {
+            opacity: 50%;
+            transition: 0.1s;
+            cursor: default;
+        }
+
+        #bu_site_enson:hover {
+            opacity: 100%;
+            transition: 0.1s;
+        }
     </style>
 </head>
 
@@ -40,29 +51,18 @@
     <br>
     <p>
         Programlama öğrenmeye başlayalı<br>
-        <b><span id="xdays"></span> gün</b> oldu!🥳
-    </p>
-    <p>
-        <?php
-        // Örnek: index.html dosyasının son güncellenme tarihi
-        $file = "index.php";
-        $lastModified = filemtime($file);
-        $today = time();
-        $daysDiff = floor(($today - $lastModified) / (60 * 60 * 24));
-        
-        echo "Bu site en son $daysDiff gün önce güncellendi.";
-        ?>
+        <b><span id="prog_bas_gun"></span> gün</b> oldu!🥳
     </p>
 
     <button onclick="window.location.href='gecme-notu-hesapla.html'">
         🎓 Geçme Notu Hesapla
     </button>
 
+    <button onclick="window.location.href='duck.html'">🦆</button>
 
-
-
-
-
+    <p id="bu_site_enson">
+        Bu site en son <b><span id="son_gunc_gun"></span></b> güncellendi.💻
+    </p>
 
     <script>
         function sinceFeb5() {
@@ -71,9 +71,25 @@
             const diff = Math.abs(today - feb5);
             return Math.ceil(diff / (1000 * 60 * 60 * 24));
         }
-        xdays.innerText = sinceFeb5();
+        prog_bas_gun.innerText = sinceFeb5();
 
+        function daysSinceLastUpdate() {
+            const lastModified = new Date(document.lastModified);
+            const today = new Date();
+            const diff = Math.abs(today - lastModified);
+            return Math.floor(diff / (1000 * 60 * 60 * 24));
+        }
 
+        switch (daysSinceLastUpdate()) {
+            case 0:
+                son_gunc_gun.innerText = "bugün";
+                break;
+            case 1:
+                son_gunc_gun.innerText = "dün";
+                break;
+            default:
+                son_gunc_gun.innerText = daysSinceLastUpdate() + " gün önce";
+        }
     </script>
 </body>
 
